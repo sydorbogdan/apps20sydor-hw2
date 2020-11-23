@@ -21,7 +21,8 @@ public class ImmutableArrayListTest {
         testList = testList.add(1);
         testList = testList.add(2);
         testList = testList.add(1, 3);
-        assertArrayEquals(new Object[]{1, 3, 2}, testList.toArray());
+        testList = testList.add(5).add(6);
+        assertArrayEquals(new Object[]{1, 3, 2, 5, 6}, testList.toArray());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -51,11 +52,11 @@ public class ImmutableArrayListTest {
     @Test
     public void testAddAllInd() {
         ImmutableArrayList testList = new ImmutableArrayList();
-        testList = testList.add(1).add(2).addAll(1, new Object[]{11, 22});
+        testList = testList.add(1).addAll(0, new Object[]{11, 22}).addAll(1, new Object[]{55});
 //        for (int i=0; i<testList.size(); i++){
 //            System.out.println(testList.getData()[i]);
 //        }
-        assertArrayEquals(new Object[]{1, 11, 22, 2}, testList.toArray());
+        assertArrayEquals(new Object[]{11, 55, 22, 1}, testList.toArray());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -143,6 +144,8 @@ public class ImmutableArrayListTest {
         ImmutableArrayList testList = new ImmutableArrayList();
         testList = testList.add(1).add(2).addAll(1, new Object[]{11, 22});
         assertEquals(2, testList.indexOf(22));
+        assertEquals(-1, testList.indexOf(100));
+
     }
 
     @Test
@@ -164,6 +167,14 @@ public class ImmutableArrayListTest {
         ImmutableArrayList testList = new ImmutableArrayList();
         testList = testList.add(1).add(2).addAll(1, new Object[]{11, 22});
         assertEquals(true, testList.clear().isEmpty());
+        assertEquals(false, testList.isEmpty());
     }
+
+    @Test
+    public void testToArray() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        assertArrayEquals(new Object[]{}, testList.toArray());
+    }
+
 
 }
