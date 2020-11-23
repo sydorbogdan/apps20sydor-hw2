@@ -7,7 +7,6 @@ import java.util.Arrays;
 import static org.junit.Assert.*;
 
 public class ImmutableLinkedListTest {
-//    ImmutableList add(Object e); //додає елемент у кінець колекції
     @Test
     public void testAdd()
     {
@@ -75,7 +74,7 @@ public class ImmutableLinkedListTest {
     @Test
     public void testRemove() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("5", testList.addAll(new Object[]{5, 6}).remove(1).toString());
+        assertEquals("6", testList.addAll(new Object[]{5, 6}).remove(0).toString());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -146,4 +145,73 @@ public class ImmutableLinkedListTest {
         ImmutableLinkedList testList = new ImmutableLinkedList();
         assertEquals("5,6", testList.addAll(new Object[]{5, 6}).toString());
     }
+
+//    public ImmutableLinkedList addFirst(Object e)
+    @Test
+    public void testAddFirst() {
+        ImmutableLinkedList testList = new ImmutableLinkedList();
+        assertEquals("2,1", testList.addFirst(1).addFirst(2).toString());
+    }
+
+//    public ImmutableLinkedList addLast(Object e)
+    @Test
+    public void testAddLast() {
+        ImmutableLinkedList testList = new ImmutableLinkedList();
+        assertEquals("1,2", testList.addLast(1).addLast(2).toString());
+    }
+
+
+//    public Object getFirst()
+    @Test
+    public void testGetFirst() {
+        ImmutableLinkedList testList = new ImmutableLinkedList();
+        assertEquals("1", testList.addLast(1).getFirst().toString());
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetFirstException() {
+        ImmutableLinkedList testList = new ImmutableLinkedList();
+        assertEquals("6", testList.getFirst());
+    }
+//    public Object getLast()
+
+    @Test
+    public void testGetLast() {
+        ImmutableLinkedList testList = new ImmutableLinkedList();
+        assertEquals("2", testList.addLast(1).addLast(2).getLast().toString());
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetLastException() {
+        ImmutableLinkedList testList = new ImmutableLinkedList();
+        assertEquals("6", testList.getLast());
+    }
+
+//    public ImmutableLinkedList removeFirst()
+    @Test
+    public void testRemoveFirst() {
+        ImmutableLinkedList testList = new ImmutableLinkedList();
+        assertEquals("2", testList.add(1).add(2).removeFirst().toString());
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testRemoveFirstException() {
+        ImmutableLinkedList testList = new ImmutableLinkedList();
+        assertEquals("6", testList.removeFirst());
+    }
+
+//    public ImmutableLinkedList removeLast() - видаляє останній елемент
+    @Test
+    public void testRemoveLast() {
+        ImmutableLinkedList testList = new ImmutableLinkedList();
+        assertEquals("1", testList.add(1).add(2).removeLast().toString());
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testRemoveLastException() {
+        ImmutableLinkedList testList = new ImmutableLinkedList();
+        assertEquals("6", testList.removeLast());
+    }
 }
+
+
