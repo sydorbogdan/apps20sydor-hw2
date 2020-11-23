@@ -16,7 +16,8 @@ public class ImmutableLinkedListTest {
         assertEquals("0,1,2", testList.add("1").add("2").toString());
     }
 
-//    ImmutableList add(int index, Object e); //додає елемент до колекції за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
+//    ImmutableList add(int index, Object e); //додає елемент до колекції за
+//    індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
 
     @Test
     public void testAddAtIndex() {
@@ -44,65 +45,89 @@ public class ImmutableLinkedListTest {
 
     }
 
-    //    ImmutableList addAll(int index, Object[] c); // додає масив елементів починаючи з зазначеного індекса, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
+    //    ImmutableList addAll(int index, Object[] c); // додає масив елементів
+    //    починаючи з зазначеного індекса, та кидає виключну ситуацію,
+    //    якщо індекс виходить за межі колекції
     @Test
     public void testAddAllInd() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("5,6", testList.addAll(0, new Object[]{5, 6}).toString());
-        assertEquals("5,1,6", testList.addAll(0, new Object[]{5, 6}).addAll(1, new Object[]{1}).toString());
-        assertEquals("5,6", testList.addAll(0, new Object[]{5, 6}).addAll(1, new Object[]{}).toString());
-        assertEquals("", testList.addAll(0, new Object[]{}).toString());
+        assertEquals("5,6", testList.addAll(0,
+                new Object[]{5, 6}).toString());
+        assertEquals("5,1,6", testList.addAll(0,
+                new Object[]{5, 6}).addAll(1,
+                new Object[]{1}).toString());
+        assertEquals("5,6", testList.addAll(0,
+                new Object[]{5, 6}).addAll(1,
+                new Object[]{}).toString());
+        assertEquals("", testList.addAll(0,
+                new Object[]{}).toString());
+        assertEquals("", testList.addAll(0,
+                new Object[]{}).toString());
 
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testAddAllException() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("5,6", testList.addAll(1, new Object[]{5, 6}).toString());
+        assertEquals("5,6", testList.addAll(
+                1, new Object[]{5, 6}).toString());
     }
 
-//    Object get(int index); //повертає елемент за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
+//    Object get(int index); //повертає елемент за індексом,
+//    та кидає виключну ситуацію, якщо індекс виходить за
+//    межі колекції
 
     @Test
     public void testGet() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("6", testList.addAll(new Object[]{5, 6}).get(1).toString());
+        assertEquals("6", testList.addAll(
+                new Object[]{5, 6}).get(1).toString());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testGetException() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("6", testList.addAll(new Object[]{5, 6}).get(100).toString());
+        assertEquals("6", testList.addAll(
+                new Object[]{5, 6}).get(100).toString());
     }
 
-//    ImmutableList remove(int index); //видаляє елемент за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
+//    ImmutableList remove(int index); //видаляє елемент
+//    за індексом, та кидає виключну ситуацію, якщо індекс
+//    виходить за межі колекції
 
     @Test
     public void testRemove() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("6", testList.addAll(new Object[]{5, 6}).remove(0).toString());
+        assertEquals("6", testList.addAll(new
+                Object[]{5, 6}).remove(0).toString());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testRemoveException() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("6", testList.addAll(new Object[]{5, 6}).remove(100).toString());
+        assertEquals("6", testList.addAll(
+                new Object[]{5, 6}).remove(100).toString());
     }
 
-//    ImmutableList set(int index, Object e); //змінює значення елементу за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
+//    ImmutableList set(int index, Object e); //змінює значення
+//    елементу за індексом, та кидає виключну ситуацію, якщо індекс
+//    виходить за межі колекції
 
     @Test
     public void testSet() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("5,99", testList.addAll(new Object[]{5, 6}).set(1, 99).toString());
+        assertEquals("5,99", testList.addAll(
+                new Object[]{5, 6}).set(1, 99).toString());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testSetException() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("6", testList.addAll(new Object[]{5, 6}).set(100, 99).toString());
+        assertEquals("6", testList.addAll(
+                new Object[]{5, 6}).set(100, 99).toString());
     }
-//    int indexOf(Object e); //шукає індекс елемента (повертає індекс першого який знайшов, або -1 у випадку відсутності)
+//    int indexOf(Object e); //шукає індекс елемента (повертає
+//    індекс першого який знайшов, або -1 у випадку відсутності)
 
     @Test
     public void testIndexOfExist() {

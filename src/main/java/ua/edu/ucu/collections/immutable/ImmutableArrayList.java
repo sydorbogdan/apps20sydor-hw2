@@ -31,7 +31,9 @@ public class ImmutableArrayList implements ImmutableList {
     }
 
     public ImmutableArrayList cloneList() {
-        return new ImmutableArrayList(Arrays.copyOf(this.getData(), this.capacity), this.size);
+        return new ImmutableArrayList(Arrays.copyOf(
+                this.getData(), this.capacity),
+                this.size);
     }
 
     @Override
