@@ -13,7 +13,7 @@ public class ImmutableLinkedListTest {
     {
         ImmutableLinkedList testList = new ImmutableLinkedList();
         assertEquals("0", testList.add("0").toString());
-        assertEquals("0,1", testList.add("0").add("1").toString());
+        assertEquals("0,1,2", testList.add("0").add("1").add("2").toString());
     }
 
 //    ImmutableList add(int index, Object e); //додає елемент до колекції за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
@@ -22,7 +22,7 @@ public class ImmutableLinkedListTest {
     public void testAddAtIndex() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
         assertEquals("0", testList.add(0, "0").toString());
-        assertEquals("0,1", testList.add(0, "0").add(1, "1").toString());
+        assertEquals("0,9,1", testList.add(0, "0").add(1, "1").add(1, "9").toString());
 
 
     }
