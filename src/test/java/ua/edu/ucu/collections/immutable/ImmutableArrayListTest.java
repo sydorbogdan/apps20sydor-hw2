@@ -1,12 +1,138 @@
 package ua.edu.ucu.collections.immutable;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class ImmutableArrayListTest {
-    
+
     @Test
-    public void testSomeMethod() {
+    public void testAdd() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(1);
+        testList = testList.add(2);
+        ImmutableArrayList cp = testList.add(3);
+        assertArrayEquals(new Object[]{1, 2}, testList.toArray());
     }
-    
+
+    @Test
+    public void testAddIndex() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(1);
+        testList = testList.add(2);
+        testList = testList.add(1, 3);
+        assertArrayEquals(new Object[]{1, 3, 2}, testList.toArray());
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAddIndException() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(100, 3);
+    }
+
+    @Test
+    public void testAddAll() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(1);
+        testList = testList.add(2);
+        testList = testList.addAll(new Object[]{11, 22});
+//        for (int i=0; i<testList.size(); i++){
+//            System.out.println(testList.getData()[i]);
+//        }
+        assertArrayEquals(new Object[]{1, 2, 11, 22}, testList.toArray());
+    }
+
+    @Test
+    public void testAddAllInd() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(1).add(2).addAll(1, new Object[]{11, 22});
+//        for (int i=0; i<testList.size(); i++){
+//            System.out.println(testList.getData()[i]);
+//        }
+        assertArrayEquals(new Object[]{1, 11, 22, 2}, testList.toArray());
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAddAllIndException() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.addAll(1, new Object[]{11, 22});
+    }
+
+    @Test
+    public void testGet() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(1).add(2).addAll(1, new Object[]{11, 22});
+//        for (int i=0; i<testList.size(); i++){
+//            System.out.println(testList.getData()[i]);
+//        }
+//        {1, 11, 22, 2}
+        assertEquals(22, testList.get(2));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetException() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList.get(100);
+    }
+
+    @Test
+    public void testRemove() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(1).add(2).addAll(1, new Object[]{11, 22});
+//        for (int i=0; i<testList.size(); i++){
+//            System.out.println(testList.getData()[i]);
+//        }
+        testList = testList.remove(1);
+//        {1, 11, 22, 2}
+        assertEquals(new Object[]{1, 22, 2}, testList.toArray());
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testRemoveException() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList.remove(100);
+    }
+
+    @Test
+    public void testSet() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(1).add(2).addAll(1, new Object[]{11, 22});
+        testList = testList.set(1, 50);
+        assertEquals(new Object[]{1, 50, 22, 2}, testList.toArray());
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testSetException() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList.set(100, 1);
+    }
+
+    @Test
+    public void testIndexOf() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(1).add(2).addAll(1, new Object[]{11, 22});
+        assertEquals(2, testList.indexOf(22));
+    }
+
+    @Test
+    public void testSize() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(1).add(2).addAll(1, new Object[]{11, 22});
+        assertEquals(4, testList.size());
+    }
+
+    @Test
+    public void testClear() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(1).add(2).addAll(1, new Object[]{11, 22});
+        assertEquals(0, testList.clear().size());
+    }
+
+    @Test
+    public void testIsEmpty() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(1).add(2).addAll(1, new Object[]{11, 22});
+        assertEquals(true, testList.clear().isEmpty());
+    }
+
 }

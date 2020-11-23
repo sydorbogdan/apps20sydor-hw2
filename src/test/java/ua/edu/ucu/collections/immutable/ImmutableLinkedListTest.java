@@ -10,8 +10,10 @@ public class ImmutableLinkedListTest {
     @Test
     public void testAdd() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("0", testList.add("0").toString());
-        assertEquals("0,1,2", testList.add("0").add("1").add("2").toString());
+        testList = testList.add("0");
+        ImmutableLinkedList updatedList = testList.add("2");
+        assertEquals("0", testList.toString());
+        assertEquals("0,1,2", testList.add("1").add("2").toString());
     }
 
 //    ImmutableList add(int index, Object e); //додає елемент до колекції за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
@@ -204,7 +206,9 @@ public class ImmutableLinkedListTest {
     @Test
     public void testRemoveLast() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("1", testList.add(1).add(2).removeLast().toString());
+        testList = testList.add(1).add(2);
+        ImmutableLinkedList removedLast = testList.removeLast();
+        assertEquals("1", removedLast.toString());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)

@@ -1,9 +1,14 @@
 package ua.edu.ucu.collections;
 
 
-public class Node {
+public class Node implements Cloneable {
     private Object data;
     private Node next;
+
+    public Node(Object inpData, Node inpNext) {
+        this.data = inpData;
+        this.next = inpNext;
+    }
 
     public Object getData() {
         return data;
@@ -19,10 +24,5 @@ public class Node {
 
     public void setNext(Node next) {
         this.next = next;
-    }
-
-    public Node(Object inpData, Node inpNext){
-        this.data = inpData;
-        this.next = inpNext;
     }
 }

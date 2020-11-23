@@ -3,7 +3,12 @@ package ua.edu.ucu.collections.immutable;
 
 import ua.edu.ucu.collections.Node;
 
-public class ImmutableLinkedList implements ImmutableList, Cloneable {
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+public class ImmutableLinkedList implements ImmutableList {
 
     Node head;
 
@@ -19,27 +24,20 @@ public class ImmutableLinkedList implements ImmutableList, Cloneable {
         this.head = null;
     }
 
-    public ImmutableLinkedList(Node inpHead) {
-        this.head = inpHead;
+    public ImmutableLinkedList(Object[] inpData) {
+        this.addAllCurr(inpData);
     }
 
     @Override
     public ImmutableLinkedList clone() {
-        ImmutableLinkedList copiedList = null;
-        try {
-            copiedList = (ImmutableLinkedList) super.clone();
-        } catch (CloneNotSupportedException e) {
-            copiedList = new ImmutableLinkedList(
-                    this.getHead());
-        }
-        return copiedList;
+        ImmutableLinkedList cop = new ImmutableLinkedList(this.toArray());
+        return cop;
     }
-
 
     @Override
     public ImmutableLinkedList add(Object e) {
         if (head == null) {
-            return new ImmutableLinkedList(new Node(e, null));
+            return new ImmutableLinkedList(new Object[]{e});
         } else {
             ImmutableLinkedList cop = this.clone();
             Node currNode = cop.getHead();
@@ -78,8 +76,19 @@ public class ImmutableLinkedList implements ImmutableList, Cloneable {
         currNode.setNext(new Node(e, null));
     }
 
+    private void addAllCurr(Object[] c) {
+        int start = 0;
+        if (this.getHead() == null && c.length > 0) {
+            this.setHead(new Node(c[0], null));
+            start++;
+        }
+        for (int i = start; i < c.length; i++) {
+            this.addToCurr(c[i]);
+        }
+    }
+
     @Override
-    public ImmutableLinkedList addAll(Object[] c) {
+    public ImmutableList addAll(Object[] c) {
         ImmutableLinkedList cop = this.clone();
         int start = 0;
         if (cop.getHead() == null && c.length > 0) {
@@ -133,7 +142,7 @@ public class ImmutableLinkedList implements ImmutableList, Cloneable {
     public ImmutableLinkedList remove(int index) {
         try {
             ImmutableLinkedList cop = this.clone();
-            Node currNode = this.getHead();
+            Node currNode = cop.getHead();
             if (index == 0) {
                 cop.setHead(currNode.getNext());
                 return cop;
@@ -280,13 +289,11 @@ public class ImmutableLinkedList implements ImmutableList, Cloneable {
     }
 
     public ImmutableLinkedList removeFirst() {
-        ImmutableLinkedList cop = this.clone();
-        return cop.remove(0);
+        return this.remove(0);
     }
 
     public ImmutableLinkedList removeLast() {
-        ImmutableLinkedList cop = this.clone();
-        return cop.remove(cop.size() - 1);
+        return this.remove(this.size() - 1);
     }
 
 }
