@@ -21,10 +21,11 @@ public class ImmutableLinkedListTest {
     @Test
     public void testAddAtIndex() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("0", testList.add(0, "0").toString());
-        assertEquals("0,9,1", testList.add(0, "0").add(1, "1").add(1, "9").toString());
-
-
+        testList = testList.add(0, "0");
+        testList = testList.add(0, "1");
+        testList = testList.add(1, "9");
+        testList = testList.add(2, "9");
+        assertEquals("1,9,9,0", testList.toString());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -39,6 +40,8 @@ public class ImmutableLinkedListTest {
     public void testAddAll() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
         assertEquals("5,6", testList.addAll(new Object[]{5, 6}).toString());
+        assertEquals("", testList.addAll(new Object[]{}).toString());
+
     }
 
     //    ImmutableList addAll(int index, Object[] c); // додає масив елементів починаючи з зазначеного індекса, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
@@ -47,6 +50,8 @@ public class ImmutableLinkedListTest {
         ImmutableLinkedList testList = new ImmutableLinkedList();
         assertEquals("5,6", testList.addAll(0, new Object[]{5, 6}).toString());
         assertEquals("5,1,6", testList.addAll(0, new Object[]{5, 6}).addAll(1, new Object[]{1}).toString());
+        assertEquals("5,6", testList.addAll(0, new Object[]{5, 6}).addAll(1, new Object[]{}).toString());
+        assertEquals("", testList.addAll(0, new Object[]{}).toString());
 
     }
 

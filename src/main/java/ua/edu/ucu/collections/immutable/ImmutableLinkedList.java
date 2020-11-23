@@ -53,11 +53,15 @@ public class ImmutableLinkedList implements ImmutableList {
                 cop.setHead(new Node(e, null));
                 return cop;
             }
-            Node currNode = cop.getHead();
-            for (int i = 1; i < index; i++) {
-                currNode = currNode.getNext();
+            if (index == 0){
+                cop.setHead(new Node(e, cop.getHead()));
+            } else {
+                Node currNode = cop.getHead();
+                for (int i = 1; i < index; i++) {
+                    currNode = currNode.getNext();
+                }
+                currNode.setNext(new Node(e, currNode.getNext()));
             }
-            currNode.setNext(new Node(e, currNode.getNext()));
             return cop;
         } catch (NullPointerException error) {
             throw new IndexOutOfBoundsException();
@@ -102,10 +106,12 @@ public class ImmutableLinkedList implements ImmutableList {
         try {
             ImmutableLinkedList cop = this.clone();
             int start = 0;
-            if (index == 0 && cop.getHead() == null) {
+            if (index == 0 && cop.getHead() == null && c.length > 0) {
                 cop.setHead(new Node(c[0], null));
                 Node currNode = cop.getHead();
                 start++;
+            } else if(index == 0 && cop.getHead() == null && c.length == 0) {
+                return cop;
             }
             Node currNode = cop.getHead();
             for (int i = 1; i < index; i++) {
