@@ -53,8 +53,8 @@ public class ImmutableLinkedListTest {
         ImmutableLinkedList testList = new ImmutableLinkedList();
         assertEquals("5,6", testList.addAll(0,
                 new Object[]{5, 6}).toString());
-        assertEquals("5,1,2,3,6,8,9,10,11", testList.addAll(0,
-                new Object[]{5, 6, 8, 9, 10, 11}).addAll(1,
+        assertEquals("5,6,8,1,2,3,9,10,11", testList.addAll(0,
+                new Object[]{5, 6, 8, 9, 10, 11}).addAll(3,
                 new Object[]{1, 2, 3}).toString());
         assertEquals("5,6", testList.addAll(0,
                 new Object[]{5, 6}).addAll(1,
