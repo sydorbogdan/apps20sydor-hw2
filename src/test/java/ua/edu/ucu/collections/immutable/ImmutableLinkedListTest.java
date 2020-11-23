@@ -40,7 +40,7 @@ public class ImmutableLinkedListTest {
     @Test
     public void testAddAll() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
-        assertEquals("5,6", testList.addAll(new Object[]{5, 6}).toString());
+        assertEquals("5,6", testList.addAll(new Object[]{5, 6}).addAll(new Object[]{}).toString());
         assertEquals("", testList.addAll(new Object[]{}).toString());
 
     }
@@ -53,9 +53,9 @@ public class ImmutableLinkedListTest {
         ImmutableLinkedList testList = new ImmutableLinkedList();
         assertEquals("5,6", testList.addAll(0,
                 new Object[]{5, 6}).toString());
-        assertEquals("5,1,6,8,9", testList.addAll(0,
-                new Object[]{5, 6, 8, 9}).addAll(1,
-                new Object[]{1}).toString());
+        assertEquals("5,1,2,3,6,8,9,10,11", testList.addAll(0,
+                new Object[]{5, 6, 8, 9, 10, 11}).addAll(1,
+                new Object[]{1, 2, 3}).toString());
         assertEquals("5,6", testList.addAll(0,
                 new Object[]{5, 6}).addAll(1,
                 new Object[]{}).toString());
