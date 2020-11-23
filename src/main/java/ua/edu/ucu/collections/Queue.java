@@ -9,12 +9,14 @@ public class Queue {
         this.data = new ImmutableLinkedList();
     }
 
-    //    Object peek() - Returns the object at the beginning of the Queue without removing it
+    //    Object peek() - Returns the object at the beginning
+    //    of the Queue without removing it
     public Object peek() {
         return data.getFirst();
     }
 
-    //    Object dequeue() - Removes and returns the object at the beginning of the Queue.
+    //    Object dequeue() - Removes and returns the object
+    //    at the beginning of the Queue.
     public Object dequeue() {
         Object peeked = data.getFirst();
         data = data.removeFirst();

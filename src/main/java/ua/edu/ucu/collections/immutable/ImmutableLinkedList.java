@@ -53,7 +53,7 @@ public class ImmutableLinkedList implements ImmutableList {
                 cop.setHead(new Node(e, null));
                 return cop;
             }
-            if (index == 0){
+            if (index == 0) {
                 cop.setHead(new Node(e, cop.getHead()));
             } else {
                 Node currNode = cop.getHead();
@@ -110,7 +110,7 @@ public class ImmutableLinkedList implements ImmutableList {
                 cop.setHead(new Node(c[0], null));
                 Node currNode = cop.getHead();
                 start++;
-            } else if(index == 0 && cop.getHead() == null && c.length == 0) {
+            } else if (index == 0 && cop.getHead() == null && c.length == 0) {
                 return cop;
             }
             Node currNode = cop.getHead();

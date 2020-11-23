@@ -26,17 +26,17 @@ public class ImmutableArrayList implements ImmutableList {
         return data;
     }
 
-    public void setData(Object[] data) {
-        this.data = data;
+    public void setData(Object[] inpData) {
+        this.data = inpData;
     }
 
-    public ImmutableArrayList clone() {
+    public ImmutableArrayList cloneList() {
         return new ImmutableArrayList(Arrays.copyOf(this.getData(), this.capacity), this.size);
     }
 
     @Override
     public ImmutableArrayList add(Object e) {
-        ImmutableArrayList cop = this.clone();
+        ImmutableArrayList cop = this.cloneList();
         if (cop.capacity == cop.size + 1) {
             cop.data = Arrays.copyOf(cop.data, 2 * cop.capacity);
             cop.capacity *= 2;
@@ -49,7 +49,7 @@ public class ImmutableArrayList implements ImmutableList {
     @Override
     public ImmutableArrayList add(int index, Object e) {
         if (0 <= index && index <= this.size) {
-            ImmutableArrayList cop = this.clone();
+            ImmutableArrayList cop = this.cloneList();
             if (cop.capacity == cop.size + 1) {
                 cop.setData(Arrays.copyOf(cop.getData(), 2 * cop.capacity));
                 cop.capacity *= 2;
@@ -67,7 +67,7 @@ public class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableArrayList addAll(Object[] c) {
-        ImmutableArrayList cop = this.clone();
+        ImmutableArrayList cop = this.cloneList();
         for (int i = 0; i < c.length; i++) {
             cop = cop.add(c[i]);
         }
@@ -77,7 +77,7 @@ public class ImmutableArrayList implements ImmutableList {
     @Override
     public ImmutableArrayList addAll(int index, Object[] c) {
         if (0 <= index && index <= this.size) {
-            ImmutableArrayList cop = this.clone();
+            ImmutableArrayList cop = this.cloneList();
             if (cop.capacity <= cop.size + 1 + c.length) {
                 cop.setData(Arrays.copyOf(cop.getData(), 2 * cop.capacity));
                 cop.capacity *= 2;
@@ -106,7 +106,7 @@ public class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableArrayList remove(int index) {
-        ImmutableArrayList cop = this.clone();
+        ImmutableArrayList cop = this.cloneList();
         if (0 <= index && index <= this.size) {
             for (int i = index; i < cop.size() - 1; i++) {
                 cop.data[i] = cop.data[i + 1];
@@ -120,7 +120,7 @@ public class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableArrayList set(int index, Object e) {
-        ImmutableArrayList cop = this.clone();
+        ImmutableArrayList cop = this.cloneList();
         if (0 <= index && index <= this.size) {
             cop.data[index] = e;
             return cop;
@@ -130,7 +130,7 @@ public class ImmutableArrayList implements ImmutableList {
     }
 
     public ImmutableArrayList setCurr(int index, Object e) {
-        ImmutableArrayList cop = this.clone();
+        ImmutableArrayList cop = this.cloneList();
         cop.data[index] = e;
         return cop;
     }
