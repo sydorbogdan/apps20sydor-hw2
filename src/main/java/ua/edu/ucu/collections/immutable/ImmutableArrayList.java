@@ -31,7 +31,7 @@ public class ImmutableArrayList implements ImmutableList {
     }
 
     public ImmutableArrayList clone() {
-        return new ImmutableArrayList(this.getData(), this.size);
+        return new ImmutableArrayList(Arrays.copyOf(this.getData(), this.capacity), this.size);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ImmutableArrayList implements ImmutableList {
                 cop.capacity *= 2;
             }
             for (int i = index; i < cop.size + 1; i++) {
-                cop.data[i + 1] = this.data[i];
+                cop = cop.setCurr(i + 1, this.data[i]);
             }
             cop.data[index] = e;
             cop.size++;
@@ -128,6 +128,13 @@ public class ImmutableArrayList implements ImmutableList {
             throw new IndexOutOfBoundsException();
         }
     }
+
+    public ImmutableArrayList setCurr(int index, Object e) {
+        ImmutableArrayList cop = this.clone();
+        cop.data[index] = e;
+        return cop;
+    }
+
 
     @Override
     public int indexOf(Object e) {
