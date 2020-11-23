@@ -8,8 +8,7 @@ import static org.junit.Assert.*;
 
 public class ImmutableLinkedListTest {
     @Test
-    public void testAdd()
-    {
+    public void testAdd() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
         assertEquals("0", testList.add("0").toString());
         assertEquals("0,1,2", testList.add("0").add("1").add("2").toString());
@@ -40,7 +39,7 @@ public class ImmutableLinkedListTest {
         assertEquals("5,6", testList.addAll(new Object[]{5, 6}).toString());
     }
 
-//    ImmutableList addAll(int index, Object[] c); // додає масив елементів починаючи з зазначеного індекса, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
+    //    ImmutableList addAll(int index, Object[] c); // додає масив елементів починаючи з зазначеного індекса, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
     @Test
     public void testAddAllInd() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
@@ -116,7 +115,8 @@ public class ImmutableLinkedListTest {
         ImmutableLinkedList testList = new ImmutableLinkedList();
         assertEquals(2, testList.addAll(new Object[]{5, 6}).size());
     }
-//    ImmutableList clear(); //очищує вміст колекції
+
+    //    ImmutableList clear(); //очищує вміст колекції
     @Test
     public void testClear() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
@@ -138,7 +138,7 @@ public class ImmutableLinkedListTest {
         assertArrayEquals(new Object[]{5, 6}, testList.addAll(new Object[]{5, 6}).toArray());
     }
 
-//    @Override
+    //    @Override
 //    String toString(); //повертає рядок, де через кому відображаютсься елементи колекції
     @Test
     public void testToString() {
@@ -146,14 +146,14 @@ public class ImmutableLinkedListTest {
         assertEquals("5,6", testList.addAll(new Object[]{5, 6}).toString());
     }
 
-//    public ImmutableLinkedList addFirst(Object e)
+    //    public ImmutableLinkedList addFirst(Object e)
     @Test
     public void testAddFirst() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
         assertEquals("2,1", testList.addFirst(1).addFirst(2).toString());
     }
 
-//    public ImmutableLinkedList addLast(Object e)
+    //    public ImmutableLinkedList addLast(Object e)
     @Test
     public void testAddLast() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
@@ -161,7 +161,7 @@ public class ImmutableLinkedListTest {
     }
 
 
-//    public Object getFirst()
+    //    public Object getFirst()
     @Test
     public void testGetFirst() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
@@ -187,7 +187,7 @@ public class ImmutableLinkedListTest {
         assertEquals("6", testList.getLast());
     }
 
-//    public ImmutableLinkedList removeFirst()
+    //    public ImmutableLinkedList removeFirst()
     @Test
     public void testRemoveFirst() {
         ImmutableLinkedList testList = new ImmutableLinkedList();
@@ -200,7 +200,7 @@ public class ImmutableLinkedListTest {
         assertEquals("6", testList.removeFirst());
     }
 
-//    public ImmutableLinkedList removeLast() - видаляє останній елемент
+    //    public ImmutableLinkedList removeLast() - видаляє останній елемент
     @Test
     public void testRemoveLast() {
         ImmutableLinkedList testList = new ImmutableLinkedList();

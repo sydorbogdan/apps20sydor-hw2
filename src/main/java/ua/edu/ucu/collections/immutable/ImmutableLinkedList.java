@@ -134,7 +134,7 @@ public class ImmutableLinkedList implements ImmutableList, Cloneable {
         try {
             ImmutableLinkedList cop = this.clone();
             Node currNode = this.getHead();
-            if (index==0){
+            if (index == 0) {
                 cop.setHead(currNode.getNext());
                 return cop;
 
@@ -267,7 +267,7 @@ public class ImmutableLinkedList implements ImmutableList, Cloneable {
         }
     }
 
-    public Object getLast(){
+    public Object getLast() {
         try {
             Node currNode = this.getHead();
             while (currNode.getNext() != null) {
@@ -279,16 +279,14 @@ public class ImmutableLinkedList implements ImmutableList, Cloneable {
         }
     }
 
-    public ImmutableLinkedList removeFirst()
-    {
+    public ImmutableLinkedList removeFirst() {
         ImmutableLinkedList cop = this.clone();
         return cop.remove(0);
     }
 
-    public ImmutableLinkedList removeLast()
-    {
+    public ImmutableLinkedList removeLast() {
         ImmutableLinkedList cop = this.clone();
-        return cop.remove(cop.size()-1);
+        return cop.remove(cop.size() - 1);
     }
 
 }

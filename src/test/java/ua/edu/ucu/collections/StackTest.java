@@ -1,6 +1,7 @@
 package ua.edu.ucu.collections;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class StackTest {
@@ -8,10 +9,10 @@ public class StackTest {
     @Test
     public void testStack() {
         Stack testStack = new Stack();
-        for (int i=1; i<5; i++){
+        for (int i = 1; i < 5; i++) {
             testStack.push(i);
         }
-        for (int i=4; i>0; i--){
+        for (int i = 4; i > 0; i--) {
             assertEquals(i, testStack.peek());
             assertEquals(i, testStack.pop());
         }
@@ -29,5 +30,5 @@ public class StackTest {
         testStack.pop();
     }
 
-    
+
 }

@@ -9,10 +9,10 @@ public class QueueTest {
     @Test
     public void testQueue() {
         Queue testQueue = new Queue();
-        for (int i=1; i<5; i++){
+        for (int i = 1; i < 5; i++) {
             testQueue.enqueue(i);
         }
-        for (int i=1; i<5; i++){
+        for (int i = 1; i < 5; i++) {
             assertEquals(i, testQueue.peek());
             assertEquals(i, testQueue.dequeue());
         }
