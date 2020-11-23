@@ -30,6 +30,12 @@ public class ImmutableArrayListTest {
         testList = testList.add(100, 3);
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAddIndExceptionNeg() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.add(-100, 3);
+    }
+
     @Test
     public void testAddAll() {
         ImmutableArrayList testList = new ImmutableArrayList();
@@ -58,6 +64,12 @@ public class ImmutableArrayListTest {
         testList = testList.addAll(1, new Object[]{11, 22});
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAddAllIndExceptionNeg() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList = testList.addAll(-10, new Object[]{11, 22});
+    }
+
     @Test
     public void testGet() {
         ImmutableArrayList testList = new ImmutableArrayList();
@@ -74,6 +86,13 @@ public class ImmutableArrayListTest {
         ImmutableArrayList testList = new ImmutableArrayList();
         testList.get(100);
     }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetExceptionNeg() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList.get(-100);
+    }
+
 
     @Test
     public void testRemove() {
@@ -93,6 +112,12 @@ public class ImmutableArrayListTest {
         testList.remove(100);
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testRemoveExceptionNeg() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList.remove(-100);
+    }
+
     @Test
     public void testSet() {
         ImmutableArrayList testList = new ImmutableArrayList();
@@ -105,6 +130,12 @@ public class ImmutableArrayListTest {
     public void testSetException() {
         ImmutableArrayList testList = new ImmutableArrayList();
         testList.set(100, 1);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testSetExceptionNeg() {
+        ImmutableArrayList testList = new ImmutableArrayList();
+        testList.set(-100, 1);
     }
 
     @Test
