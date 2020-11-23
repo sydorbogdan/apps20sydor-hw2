@@ -1,13 +1,19 @@
 package ua.edu.ucu.collections.immutable;
 
-import lombok.Getter;
-import lombok.Setter;
+
 import ua.edu.ucu.collections.Node;
 
 public class ImmutableLinkedList implements ImmutableList, Cloneable {
-    @Getter
-    @Setter
+
     Node head;
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
+    }
 
     public ImmutableLinkedList() {
         this.head = null;
